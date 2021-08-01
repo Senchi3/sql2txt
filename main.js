@@ -7,15 +7,16 @@ db.each("SELECT title, body, date FROM notes",
     (error, row) => {
         let data = row.date + " " + row.title + " " + row.body;
 
-        let parsedTitle = row.title.replace(/\//g, "-");
-        let parsedTitleAdv = row.title.replace("[^a-zA-Z0-9\\.\\\ -]", "_");
-        console.log(parsedTitleAdv);
+        // let parsedTitle = row.title.replace(/\//g, "-");
+        // let parsedTitle = row.title.replace("[^a-zA-Z0-9\\.\\\ -]", "_");
+        let parsedTitle = row.title.replace(/[^0-9A-Z\ ]+/gi,"_");
+        console.log(parsedTitle);
         let parsedDate = row.date.replace(/\//g, "-").split("-");
 
-        fs.writeFile('output/' + parsedDate[2] + '-' + parsedDate[1] + '-' + parsedDate[0] + ' - ' + parsedTitleAdv + '.txt', data, function (err) {
-            if (err) throw err;
-            console.log('Saved!');
-          });
+        //fs.writeFile('output/' + parsedDate[2] + '-' + parsedDate[1] + '-' + parsedDate[0] + ' - ' + parsedTitle + '.txt', data, function (err) {
+            // if (err) throw err;
+            // console.log('Saved!');
+        //   });
           
         
     }
