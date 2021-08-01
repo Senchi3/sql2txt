@@ -13,10 +13,10 @@ db.each("SELECT title, body, date FROM notes",
         console.log(parsedTitle);
         let parsedDate = row.date.replace(/\//g, "-").split("-");
 
-        //fs.writeFile('output/' + parsedDate[2] + '-' + parsedDate[1] + '-' + parsedDate[0] + ' - ' + parsedTitle + '.txt', data, function (err) {
-            // if (err) throw err;
-            // console.log('Saved!');
-        //   });
+        fs.writeFile('output/' + parsedDate[2] + '-' + parsedDate[1] + '-' + parsedDate[0] + ' - ' + parsedTitle + '.txt', data, function (err) {
+            if (err) throw err;
+            console.log('Saved!');
+        });
           
         
     }
